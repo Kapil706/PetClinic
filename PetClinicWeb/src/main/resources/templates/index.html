@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Pet Clinic App</title>
+</head>
+<body>
+
+
+<h1 th:text="'Vet List'">vets </h1>
+
+<table>
+
+  <thead>
+  <tr>
+     <th> Id </th>
+     <th> First Name </th>
+     <th> Last Name  </th>
+   
+    </tr>
+  
+  
+  
+   </thead>
+   
+   <tbody>
+   
+   <tr th:each="vet:${Vets}">
+      <td th:text="${vet.id}"> 1
+      </td>
+      <td th:text="${vet.firstName}"> lipak
+      </td>
+      <td th:text="${vet.lastName}"> kumar
+      </td>
+   
+   
+   
+     </tr>
+   
+   
+   
+   </tbody>
+   
+
+
+
+
+</table>
+
+
+</body>
+</html>

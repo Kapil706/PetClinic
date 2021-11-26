@@ -77,6 +77,9 @@ public class DataLoader implements CommandLineRunner{
 		
 		System.out.println("Load Vets....");
 		
+		System.out.println(vetService.findAll());
+		System.out.println(ownerService.findAll());
+		
 	}
 
 
