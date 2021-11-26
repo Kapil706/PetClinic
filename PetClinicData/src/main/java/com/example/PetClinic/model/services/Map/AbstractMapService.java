@@ -1,13 +1,18 @@
 package com.example.PetClinic.model.services.Map;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class AbstractMapService<T,ID> {
+import com.example.PetClinic.model.BaseEntity;
+
+import java.util.*;
+
+public abstract class AbstractMapService<T extends BaseEntity,ID extends Long> {
 	
-	 protected Map<ID,T> map = new HashMap<>();
+	 protected Map<Long,T> map = new HashMap<>();
 	 
 	 
 	 Set<T> findAll(){
@@ -24,8 +29,14 @@ public abstract class AbstractMapService<T,ID> {
 	 }
 	
 	 
-	 T save(ID Id, T object) {
-		 map.put(Id, object);
+	 T save( T object) {
+		 
+		 if(object!=null) {
+			 if(object.getId()==null) {
+				 object.setId(getNextId());
+			 }
+		 }
+		 map.put(object.getId(), object);
 		 return object;
 	 }
 	 
@@ -38,6 +49,21 @@ public abstract class AbstractMapService<T,ID> {
 	 void delete(T object) {
 		 
 		 map.entrySet().removeIf(entry->entry.getValue().equals(object));
+		 
+	 }
+	 
+	 private Long getNextId() {
+		 
+		 Long nextId = null;
+		 
+		 try {
+			 
+			 nextId = Collections.max(map.keySet())+1;
+		 }catch(NoSuchElementException e) {
+			 nextId=1L;
+		 }
+		 
+		 return nextId;
 		 
 	 }
 
