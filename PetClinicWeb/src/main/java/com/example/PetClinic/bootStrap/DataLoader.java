@@ -28,6 +28,8 @@ public class DataLoader implements CommandLineRunner{
 //		
 //	}
 
+	
+	// di- dependency injection
 	public DataLoader(OwnerService ownerService, VetService vetService) {
 		super();
 		this.ownerService = ownerService;
@@ -50,7 +52,7 @@ public class DataLoader implements CommandLineRunner{
 		owner2.setId(2L);
 		owner2.setFirstName("Lalit");
 		owner2.setLastName("Kumar");
-		
+		ownerService.save(owner2);
 		
 		System.out.println("Load Owners......");
 		
