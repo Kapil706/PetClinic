@@ -5,8 +5,9 @@ import java.util.Set;
 import com.example.PetClinic.model.Vet;
 
 import com.example.PetClinic.model.services.CrudService;
+import com.example.PetClinic.model.services.VetService;
 
-public class VetServiceMap extends AbstractMapService<Vet,Long> implements CrudService<Vet,Long>{
+public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService{
 
 	
 	 @Override
